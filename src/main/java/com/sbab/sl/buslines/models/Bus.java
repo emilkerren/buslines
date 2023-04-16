@@ -1,4 +1,4 @@
-package com.sbab.sl.buslines;
+package com.sbab.sl.buslines.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.sbab.sl.buslines;
+package com.sbab.sl.buslines.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

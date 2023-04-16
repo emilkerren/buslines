@@ -1,5 +1,7 @@
 package com.sbab.sl.buslines;
 
+import com.sbab.sl.buslines.models.Bus;
+import com.sbab.sl.buslines.repository.BuslinesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
