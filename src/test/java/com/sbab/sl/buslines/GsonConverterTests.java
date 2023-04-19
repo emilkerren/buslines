@@ -25,8 +25,8 @@ class GsonConverterTests {
     public void setup() {
 
         responseData = new ResponseData("2023-04-16 00:11", "JourneyPatternPointOnLine", List.of(
-                new Result(1, 1, 10008, "2022-02-15 00:00:00.000", "2022-02-15 00:00:00.000"),
-                new Result(1, 1, 10012, "2023-03-07 00:00:00.000", "2023-03-07 00:00:00.000")
+                new Result(1, 1, "10008", "2022-02-15 00:00:00.000", "2022-02-15 00:00:00.000"),
+                new Result(1, 1, "10012", "2023-03-07 00:00:00.000", "2023-03-07 00:00:00.000")
         ));
         response = new ApiResponse(0, null, 334, responseData);
     }

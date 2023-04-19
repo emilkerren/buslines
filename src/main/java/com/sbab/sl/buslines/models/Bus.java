@@ -4,21 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class Bus {
     @Id
     @GeneratedValue
     private Long id;
-	private String busLine;
-	private String busStops;
-	private String description;
+	private int busNumber;
+	private int numberOfBusStops;
+	private List<String> busStops;
 
 	private Bus() {}
 
-	public Bus(String busLine, String busStops, String description) {
-		this.busLine = busLine;
+	public Bus(int busNumber, int numberOfBusStops, List<String> busStops) {
+		this.busNumber = busNumber;
+		this.numberOfBusStops = numberOfBusStops;
 		this.busStops = busStops;
-		this.description = description;
 	}
 
     public Long getId() {
@@ -29,37 +31,37 @@ public class Bus {
         this.id = id;
     }
 
-    public String getBusLine() {
-        return this.busLine;
+    public int getBusNumber() {
+        return this.busNumber;
     }
 
-    public void setBusLine(String busLine) {
-        this.busLine = busLine;
+    public void setBusNumber(int busNumber) {
+        this.busNumber = busNumber;
     }
 
-    public String getBusStops() {
+    public int getNumberOfBusStops() {
+        return this.numberOfBusStops;
+    }
+
+    public void setNumberOfBusStops(int numberOfBusStops) {
+        this.numberOfBusStops = numberOfBusStops;
+    }
+
+    public List<String> getBusStops() {
         return this.busStops;
     }
 
-    public void setBusStops(String busStops) {
+    public void setBusStops(List<String> busStops) {
         this.busStops = busStops;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override
     public String toString() {
         return "Bus{" +
             " id='" + getId() + "'" +
-            ", busLine='" + getBusLine() + "'" +
+            ", busLine='" + getBusNumber() + "'" +
+            ", numberOfBusStops='" + getNumberOfBusStops() + "'" +
             ", busStops='" + getBusStops() + "'" +
-            ", description='" + getDescription() + "'" +
             "}";
     }
     
