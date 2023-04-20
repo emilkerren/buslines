@@ -5,10 +5,41 @@ function App() {
   const [buses, setBuses] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/buses')
+    axios.get('http://localhost:8080/api/buses')
       .then(response => setBuses(response.data.busList))
       .catch(error => console.error(error));
   }, []);
+
+  function renderBusStopRow(busStop, index) {
+    return (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{busStop}</td>
+      </tr>
+    );
+  }
+
+  function renderBusRow(bus) {
+    return (
+      <React.Fragment key={bus.id}>
+        <tr>
+          <td>{bus.busNumber}</td>
+          <td>{bus.numberOfBusStops}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <table>
+              <tbody>
+                {bus.busStops.map(renderBusStopRow)}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </React.Fragment>
+    );
+  }
 
   return (
     <div>
@@ -16,21 +47,13 @@ function App() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Bus Line</th>
-            <th>Number of Bus Stops</th>
+            <th>Bus Line ||</th>
+            <th>Number of bus stops ||</th>
             <th>Bus Stops</th>
           </tr>
         </thead>
         <tbody>
-          {buses.map(bus =>
-            <tr key={bus.id}>
-              <td>{bus.id}</td>
-              <td>{bus.busNumber}</td>
-              <td>{bus.numberOfBusStops}</td>
-              <td>{bus.busStops.join(', ')}</td>
-            </tr>
-          )}
+          {buses.map(renderBusRow)}
         </tbody>
       </table>
     </div>
