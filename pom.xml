@@ -12,7 +12,7 @@
 	<artifactId>buslines</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>buslines</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Boot and React project to show the most bus stop heavy bus lines</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
