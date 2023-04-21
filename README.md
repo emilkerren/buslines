@@ -13,7 +13,7 @@ No need for maven since a wrapper is included
 To install the project, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Navigate to the project directory root and run mvn clean install to build the backend.
+2. Navigate to the project directory root and run mvn clean install -DskipTests to build the backend.
 3. Navigate to the frontend directory in src/main/java/com/sbab/sl/buslines/app and run 'npm install' to install the frontend dependencies.
 
 ## Running
