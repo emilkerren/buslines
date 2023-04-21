@@ -1,4 +1,5 @@
 HELP.md
+src/main/java/com/sbab/sl/buslines/app/package-lock.json
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -28,9 +29,6 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-### MVN ###
-.mvn/
 
 ### VS Code ###
 .vscode/

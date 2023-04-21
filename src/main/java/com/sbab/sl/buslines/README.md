@@ -4,9 +4,10 @@ This project uses the API described here https://www.trafiklab.se/api/sl-hallpla
 to show a list of the buses with the most bus stops.
 
 ## Prerequisites
+No need for maven since a wrapper is included
 * Node.js 19.9.x
-* Maven 3.6.x
 * Java 17
+
 
 ## Installing
 To install the project, follow these steps:
@@ -18,8 +19,8 @@ To install the project, follow these steps:
 ## Running
 ### Start backend by 
 * running BuslinesApplication.java from IDE 
-* or by standing on workspace root and running command 'mvn spring-boot:run'
-* or navigate to /target folder and run 'java -jar buslines-0.0.1-SNAPSHOT.jar'
+* standing on workspace root and running command './mvnw spring-boot:run' from linux or 'mvnw.cmd spring-boot:run' on windows
+* navigate to /target folder and run 'java -jar buslines-0.0.1-SNAPSHOT.jar'
 
 ### Start frontend by
 * open another terminal window and navigate to src/main/java/com/sbab/sl/buslines/app and run 'npm start'
