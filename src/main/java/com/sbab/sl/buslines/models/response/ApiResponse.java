@@ -1,62 +1,47 @@
 package com.sbab.sl.buslines.models.response;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.GsonBuilder;
+
 public class ApiResponse {
-    @SerializedName("StatusCode")
-    int statusCode;
-    @SerializedName("Message")
-    String message;
-    @SerializedName("ExecutionTime")
-    int executionTime;
-    @SerializedName("ResponseData")
-    ResponseData responseData;
+    private int StatusCode;
+    private String Message;
+    private int ExecutionTime;
+    private ResponseData ResponseData;
 
-
-    public ApiResponse(int statusCode, String message, int executionTime, ResponseData responseData) {
-        this.statusCode = statusCode;
-        this.message = message;
-        this.executionTime = executionTime;
-        this.responseData = responseData;
-    }
-
-    public ResponseData getResponseData() {
-        return responseData;
-    }
-
-    public void setResponseData(ResponseData responseData) {
-        this.responseData = responseData;
-    }
     public int getStatusCode() {
-        return statusCode;
+        return StatusCode;
     }
 
     public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+        StatusCode = statusCode;
     }
 
     public String getMessage() {
-        return message;
+        return Message;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        Message = message;
     }
 
     public int getExecutionTime() {
-        return executionTime;
+        return ExecutionTime;
     }
 
     public void setExecutionTime(int executionTime) {
-        this.executionTime = executionTime;
+        ExecutionTime = executionTime;
+    }
+
+    public ResponseData getResponseData() {
+        return ResponseData;
+    }
+
+    public void setResponseData(com.sbab.sl.buslines.models.response.ResponseData responseData) {
+        ResponseData = responseData;
     }
 
     @Override
     public String toString() {
-        return "Response{" +
-                "StatusCode=" + statusCode +
-                ", Message='" + message + '\'' +
-                ", ExecutionTime=" + executionTime +
-                ", ResponseData=" + responseData +
-                '}';
+        return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }

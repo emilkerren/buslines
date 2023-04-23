@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class BusController {
 
     @Autowired
@@ -19,9 +20,20 @@ public class BusController {
 
     @GetMapping("/buses")
     public Buses getBuses() {
-        ResponseEntity<String> responseJour = busService.getBusJour();
-        ResponseEntity<String> responseStops = busService.getBusStops();
+        ResponseEntity<String> jour;
+        ResponseEntity<String> stop;
+        try {
+            jour = busService.getBusJour();
+        } catch (Exception e) {
+            throw new RestClientException("Error getting jour object", e);
+        }
+        try {
+            stop = busService.getBusStop();
+        } catch (Exception e) {
+            throw new RestClientException("Error getting stop object", e);
+        }
 
-        return busService.createBuses(responseJour, responseStops);
+        return busService.createBuses(jour, stop);
+
     }
 }

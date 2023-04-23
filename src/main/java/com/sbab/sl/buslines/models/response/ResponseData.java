@@ -1,57 +1,43 @@
 package com.sbab.sl.buslines.models.response;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
 public class ResponseData {
-    @SerializedName("Version")
-    String version;
-    @SerializedName("Type")
-    String type;
-    @SerializedName("Result")
-    List<Result> result;
+    String Version;
+    String Type;
+    List<Result> Result;
 
-    ResponseData() {
-
-    }
-
-    public ResponseData(String version, String type, List<Result> result) {
-        this.version = version;
-        this.type = type;
-        this.result = result;
-    }
+    public ResponseData() {
+	}
 
     public void setVersion(String version) {
-        this.version = version;
+        this.Version = version;
     }
 
     public String getVersion() {
-        return version;
+        return Version;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public List<Result> getResult() {
-        return result;
+        return Result;
     }
 
     public void setResult(List<Result> result) {
-        this.result = result;
+        this.Result = result;
     }
 
     @Override
     public String toString() {
-        return "ResponseData{" +
-                "Version='" + version + '\'' +
-                ", Type='" + type + '\'' +
-                ", Result=" + result +
-                '}';
+        return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }

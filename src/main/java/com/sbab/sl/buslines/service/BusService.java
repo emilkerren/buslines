@@ -25,7 +25,7 @@ public class BusService {
     private RestTemplate restTemplate;
     @Autowired
     private Environment env;
-    private final Gson GSON = new GsonBuilder().serializeNulls().create();
+    private final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public ResponseEntity<String> getBusJour() {
         //url for fetching all the buses journey points
@@ -33,10 +33,10 @@ public class BusService {
         return restTemplate.getForEntity(apiJourUrl, String.class);
     }
 
-    public ResponseEntity<String> getBusStops() {
+    public ResponseEntity<String> getBusStop() {
         //url for fetching all bus stops with its names
-        String apiStopsUrl = this.env.getProperty("spring.data.rest.base.path") + "?" + this.env.getProperty("spring.data.rest.api.key") + "&" + this.env.getProperty("spring.data.rest.bus.stop.query");
-        return restTemplate.getForEntity(apiStopsUrl, String.class);
+        String apiStopUrl = this.env.getProperty("spring.data.rest.base.path") + "?" + this.env.getProperty("spring.data.rest.api.key") + "&" + this.env.getProperty("spring.data.rest.bus.stop.query");
+        return restTemplate.getForEntity(apiStopUrl, String.class);
     }
 
     public Buses createBuses(ResponseEntity<String> responseJour, ResponseEntity<String> responseStops) {
@@ -65,7 +65,7 @@ public class BusService {
 
         //loop over list and create Bus object which is then put into its own list
         List<Bus> busList = new ArrayList<>();
-        sortedListWithStopNames.stream().map(x -> new Bus(x.getKey(), x.getValue().size(), x.getValue())).collect(Collectors.toCollection(() -> busList));
+        sortedListWithStopNames.stream().map(x -> new Bus(x.getKey(), x.getValue().stream().filter(s -> !s.contentEquals("Unknown")).toList().size(), x.getValue())).collect(Collectors.toCollection(() -> busList));
 
         return new Buses(busList);
     }

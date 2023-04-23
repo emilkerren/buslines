@@ -1,152 +1,121 @@
 package com.sbab.sl.buslines.models.response;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.GsonBuilder;
 
 public class Result {
-    @SerializedName("LineNumber")
-    int lineNumber;
-    @SerializedName("DirectionCode")
-    int directionCode;
-    @SerializedName("JourneyPatternPointNumber")
-    String journeyPatternPointNumber;
-    @SerializedName("LastModifiedUtcDateTime")
-    String lastModifiedUtcDateTime;
-    @SerializedName("ExistsFromDate")
-    String existsFromDate;
-    @SerializedName("StopPointNumber")
-    String stopPointNumber;
-    @SerializedName("StopPointName")
-    String stopPointName;
-    @SerializedName("StopAreaNumber")
-    String stopAreaNumber;
-    @SerializedName("LocationNorthingCoordinate")
-    String locationNorthingCoordinate;
-    @SerializedName("LocationEastingCoordinate")
-    String locationEastingCoordinate;
-    @SerializedName("ZoneShortName")
-    String zoneShortName;
-    @SerializedName("StopAreaTypeCode")
-    String stopAreaTypeCode;
+    // Fields for JourneyPatternPointOnLine response
+    private int LineNumber;
+    private int DirectionCode;
+    private String JourneyPatternPointNumber;
+    private String LastModifiedUtcDateTime;
+    private String ExistsFromDate;
 
-    public Result(int lineNumber, int directionCode, String journeyPatternPointNumber, String lastModifiedUtcDateTime, String existsFromDate) {
-        this.lineNumber = lineNumber;
-        this.directionCode = directionCode;
-        this.journeyPatternPointNumber = journeyPatternPointNumber;
-        this.lastModifiedUtcDateTime = lastModifiedUtcDateTime;
-        this.existsFromDate = existsFromDate;
-    }
+    // Fields for StopPoint response
+    private String StopPointNumber;
+    private String StopPointName;
+    private String StopAreaNumber;
+    private String LocationNorthingCoordinate;
+    private String LocationEastingCoordinate;
+    private String ZoneShortName;
+    private String StopAreaTypeCode;
 
     public int getLineNumber() {
-        return lineNumber;
+        return LineNumber;
     }
 
     public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
+        this.LineNumber = lineNumber;
     }
 
     public int getDirectionCode() {
-        return directionCode;
+        return DirectionCode;
     }
 
     public void setDirectionCode(int directionCode) {
-        this.directionCode = directionCode;
+        DirectionCode = directionCode;
     }
 
     public String getJourneyPatternPointNumber() {
-        return journeyPatternPointNumber;
+        return JourneyPatternPointNumber;
     }
 
     public void setJourneyPatternPointNumber(String journeyPatternPointNumber) {
-        this.journeyPatternPointNumber = journeyPatternPointNumber;
+        this.JourneyPatternPointNumber = journeyPatternPointNumber;
     }
 
     public String getLastModifiedUtcDateTime() {
-        return lastModifiedUtcDateTime;
+        return LastModifiedUtcDateTime;
     }
 
     public void setLastModifiedUtcDateTime(String lastModifiedUtcDateTime) {
-        this.lastModifiedUtcDateTime = lastModifiedUtcDateTime;
+        LastModifiedUtcDateTime = lastModifiedUtcDateTime;
     }
 
     public String getExistsFromDate() {
-        return existsFromDate;
+        return ExistsFromDate;
     }
 
     public void setExistsFromDate(String existsFromDate) {
-        this.existsFromDate = existsFromDate;
+        ExistsFromDate = existsFromDate;
     }
 
     public String getStopPointNumber() {
-        return stopPointNumber;
+        return StopPointNumber;
     }
 
     public void setStopPointNumber(String stopPointNumber) {
-        this.stopPointNumber = stopPointNumber;
+        StopPointNumber = stopPointNumber;
     }
 
     public String getStopPointName() {
-        return stopPointName;
+        return StopPointName;
     }
 
     public void setStopPointName(String stopPointName) {
-        this.stopPointName = stopPointName;
+        StopPointName = stopPointName;
     }
 
     public String getStopAreaNumber() {
-        return stopAreaNumber;
+        return StopAreaNumber;
     }
 
     public void setStopAreaNumber(String stopAreaNumber) {
-        this.stopAreaNumber = stopAreaNumber;
+        StopAreaNumber = stopAreaNumber;
     }
 
     public String getLocationNorthingCoordinate() {
-        return locationNorthingCoordinate;
+        return LocationNorthingCoordinate;
     }
 
     public void setLocationNorthingCoordinate(String locationNorthingCoordinate) {
-        this.locationNorthingCoordinate = locationNorthingCoordinate;
+        LocationNorthingCoordinate = locationNorthingCoordinate;
     }
 
     public String getLocationEastingCoordinate() {
-        return locationEastingCoordinate;
+        return LocationEastingCoordinate;
     }
 
     public void setLocationEastingCoordinate(String locationEastingCoordinate) {
-        this.locationEastingCoordinate = locationEastingCoordinate;
+        LocationEastingCoordinate = locationEastingCoordinate;
     }
-
     public String getZoneShortName() {
-        return zoneShortName;
+        return ZoneShortName;
     }
 
     public void setZoneShortName(String zoneShortName) {
-        this.zoneShortName = zoneShortName;
+        ZoneShortName = zoneShortName;
     }
 
     public String getStopAreaTypeCode() {
-        return stopAreaTypeCode;
+        return StopAreaTypeCode;
     }
 
     public void setStopAreaTypeCode(String stopAreaTypeCode) {
-        this.stopAreaTypeCode = stopAreaTypeCode;
+        StopAreaTypeCode = stopAreaTypeCode;
     }
 
     @Override
     public String toString() {
-        return "Result{" +
-                "lineNumber=" + lineNumber +
-                ", directionCode=" + directionCode +
-                ", journeyPatternPointNumber=" + journeyPatternPointNumber +
-                ", lastModifiedUtcDateTime='" + lastModifiedUtcDateTime + '\'' +
-                ", existsFromDate='" + existsFromDate + '\'' +
-                ", stopPointNumber='" + stopPointNumber + '\'' +
-                ", stopPointName='" + stopPointName + '\'' +
-                ", stopAreaNumber='" + stopAreaNumber + '\'' +
-                ", locationNorthingCoordinate='" + locationNorthingCoordinate + '\'' +
-                ", locationEastingCoordinate='" + locationEastingCoordinate + '\'' +
-                ", zoneShortName='" + zoneShortName + '\'' +
-                ", stopAreaTypeCode='" + stopAreaTypeCode + '\'' +
-                '}';
+        return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }

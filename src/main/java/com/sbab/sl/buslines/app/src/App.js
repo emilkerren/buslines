@@ -2,60 +2,41 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [buses, setBuses] = useState([]);
+  const [busList, setBusList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/buses')
-      .then(response => setBuses(response.data.busList))
-      .catch(error => console.error(error));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/buses');
+        setBusList(response.data.BusList);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
-  function renderBusStopRow(busStop, index) {
-    return (
-      <tr key={index}>
-        <td>{index + 1}</td>
-        <td>{busStop}</td>
-      </tr>
-    );
-  }
-
-  function renderBusRow(bus) {
-    return (
-      <React.Fragment key={bus.id}>
-        <tr>
-          <td>{bus.busNumber}</td>
-          <td>{bus.numberOfBusStops}</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-            <table>
-              <tbody>
-                {bus.busStops.map(renderBusStopRow)}
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </React.Fragment>
-    );
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <h1>List of Buses</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Bus Line ||</th>
-            <th>Number of bus stops ||</th>
-            <th>Bus Stops</th>
-          </tr>
-        </thead>
-        <tbody>
-          {buses.map(renderBusRow)}
-        </tbody>
-      </table>
+      <h1>Bus List</h1>
+      {busList.map(bus => (
+        <div key={bus.busNumber}>
+          <h2>Bus {bus.busNumber}</h2>
+          <p>Number of bus stops: {bus.numberOfBusStops}</p>
+          <ul>
+            {bus.busStops.map(stop => (
+              <li key={stop}>{stop}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
